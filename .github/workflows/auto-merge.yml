@@ -1,0 +1,26 @@
+name: Auto Merge on Push
+
+on:
+  push:
+    branches:
+      - feature/*
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Merge Branch
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git checkout master
+          git merge --no-ff "${{ github.event.inputs.branch }}"
+
+      - name: Push Changes
+        run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
