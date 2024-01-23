@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: emiliopedrollo/auto-merge@v1.2.0
+      - name: Run emiliopedrollo/auto-merge
+        uses: emiliopedrollo/auto-merge@v1.2.0
         with:
-          github_token: ${{ github.token }}
-          target_branch: 'master'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
