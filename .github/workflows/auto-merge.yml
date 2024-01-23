@@ -4,19 +4,12 @@ on:
   push:
     branches:
       - feature/my-feature
-
 jobs:
-  merge:
+  merge-branch:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-      - name: merge
-        uses: mtanzi/action-automerge@v1
-        id: merge
+      - uses: actions/checkout@v2
+      - uses: emiliopedrollo/auto-merge@v1.2.0
         with:
           github_token: ${{ github.token }}
-          source: 'feature/my-feature'
-          target: 'master'
-          webhook_url: #if present add the Slack webhook
+          target_branch: 'master'
