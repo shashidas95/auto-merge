@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - "*"
+      - "feature/my-feature"
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
