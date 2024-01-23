@@ -3,7 +3,7 @@ name: Auto Merge on Push
 on:
   push:
     branches:
-      - master
+      - feature/my-feature
 
 jobs:
   merge:
@@ -16,8 +16,7 @@ jobs:
         uses: mtanzi/action-automerge@v1
         id: merge
         with:
-           github_token: ${{ github.token }}
-           source: 'feature/my-feature'
-           target: 'master'
-           webhook_url: #if present add the Slack webhook
-      
+          github_token: ${{ github.token }}
+          source: 'feature/my-feature'
+          target: 'master'
+          webhook_url: #if present add the Slack webhook
