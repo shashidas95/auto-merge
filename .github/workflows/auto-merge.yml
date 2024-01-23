@@ -1,16 +1,14 @@
-name: Auto Merge on Push
-
 on:
   push:
     branches:
-      - feature/my-feature
+      - "*"
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run emiliopedrollo/auto-merge
-        uses: emiliopedrollo/auto-merge@v1.2.0
+      - uses: emiliopedrollo/auto-merge@v1.2.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ github.token }}
+          target_branch: 'master'
 
